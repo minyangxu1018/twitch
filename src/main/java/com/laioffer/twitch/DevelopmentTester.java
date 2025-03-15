@@ -1,8 +1,7 @@
 package com.laioffer.twitch;
 
 
-import com.laioffer.twitch.db.UserRepository;
-import com.laioffer.twitch.db.entity.UserEntity;
+import com.laioffer.twitch.user.UserService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -12,17 +11,18 @@ import org.springframework.stereotype.Component;
 public class DevelopmentTester implements ApplicationRunner {
 
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
 
-    public DevelopmentTester(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public DevelopmentTester(UserService userService) {
+        this.userService = userService;
     }
+
+
 
 
     @Override
     public void run(ApplicationArguments args) {
-        UserEntity newUser = new UserEntity(null, "user0", "Foo", "Bar", "password");
-        userRepository.save(newUser);
+        userService.register("default", "123456", "John", "Smith");
     }
 }
