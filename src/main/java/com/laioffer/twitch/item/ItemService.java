@@ -4,6 +4,7 @@ package com.laioffer.twitch.item;
 import com.laioffer.twitch.external.TwitchService;
 import com.laioffer.twitch.external.model.Video;
 import com.laioffer.twitch.model.TypeGroupedItemList;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Stream;
@@ -27,6 +28,7 @@ public class ItemService {
     }
 
 
+    @Cacheable("items")
     public TypeGroupedItemList getItems(String gameId) {
         List<Video> videos = twitchService.getVideos(gameId, SEARCH_RESULT_SIZE);
         List<Clip> clips = twitchService.getClips(gameId, SEARCH_RESULT_SIZE);

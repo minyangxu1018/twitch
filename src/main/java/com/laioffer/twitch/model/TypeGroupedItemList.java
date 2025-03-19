@@ -1,6 +1,7 @@
 package com.laioffer.twitch.model;
 
 
+import com.laioffer.twitch.db.entity.ItemEntity;
 import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
